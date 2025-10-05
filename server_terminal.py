@@ -150,5 +150,8 @@ def on_disconnect():
 
 
 if __name__ == "__main__":
-    print("🟢 Terminal server on http://127.0.0.1:5001")
-    socketio.run(app, host="0.0.0.0", port=5001, debug=False)
+    import os
+    port = int(os.environ.get("PORT", 10000))
+    print(f"🟢 Terminal server starting on 0.0.0.0:{port}")
+    socketio.run(app, host="0.0.0.0", port=port)
+
