@@ -1,4 +1,5 @@
 # server_terminal.py  (threading + polling friendly)
+import os
 import sys, threading, subprocess
 from flask import Flask, request
 from flask_socketio import SocketIO
@@ -152,6 +153,7 @@ def on_disconnect():
 if __name__ == "__main__":
     print("🟢 Terminal server running on Render...")
     socketio.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 10000)), allow_unsafe_werkzeug=True)
+
 
 
 
