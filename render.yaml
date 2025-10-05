@@ -1,0 +1,19 @@
+# render.yaml — terminal backend
+services:
+  - type: web
+    name: photon-terminal
+    runtime: python
+    branch: main
+    plan: starter
+
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server_terminal.py
+
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: CORS_ORIGIN
+        value: https://photon-frontend-v2.onrender.com
+
+    healthCheckPath: /healthz
+    autoDeploy: true
