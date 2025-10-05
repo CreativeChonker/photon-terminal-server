@@ -150,8 +150,8 @@ def on_disconnect():
 
 
 if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 10000))
-    print(f"🟢 Terminal server starting on 0.0.0.0:{port}")
-    socketio.run(app, host="0.0.0.0", port=port)
+    print("🟢 Terminal server running on Render...")
+    socketio.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 10000)), allow_unsafe_werkzeug=True)
+
+
 
