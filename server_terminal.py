@@ -151,9 +151,11 @@ def on_disconnect():
 
 
 if __name__ == "__main__":
-    import os
-    port = int(os.environ.get("PORT", 5000))
-    print(f"🟢 Terminal server starting on port {port}")
+    port = os.environ.get("PORT")
+    try:
+        port = int(port)
+    except (TypeError, ValueError):
+        port = 5000  # fallback if it's empty or invalid
     socketio.run(app, host="0.0.0.0", port=port, allow_unsafe_werkzeug=True)
 
 
